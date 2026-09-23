@@ -1,0 +1,8 @@
+{
+  "name": "ecommerce-report-pdf",
+  "private": true,
+  "type": "module",
+  "scripts": {"start": "node --experimental-strip-types src/report_service.ts", "test": "node --experimental-strip-types --test src/report_service.test.ts", "typecheck": "tsc --noEmit"},
+  "dependencies": {"zod": "^3.23.8"},
+  "devDependencies": {"typescript": "^5.6.3"}
+}
