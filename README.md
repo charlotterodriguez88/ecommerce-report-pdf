@@ -37,3 +37,7 @@ The snippet above stays copy-paste simple. Before you ship, a few **required** s
 
 **Ecommerce Report PDF: PDF**
 - **Ecommerce Report PDF:** Generation draws on credit; large/complex documents cost more — watch `GET /v1/account/usage`.
+
+## Further reading
+
+- [Node.js Gaming API — Fill PDF Form Fields with 3 Flattening Controls](docs/node-js-gaming-api-fill-pdf-form-fields-with-3-fl-1gdv1v.md)
