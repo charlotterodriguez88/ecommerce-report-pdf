@@ -40,4 +40,5 @@ The snippet above stays copy-paste simple. Before you ship, a few **required** s
 
 ## Further reading
 
+- [Weekly Clinical Invoice PDF Report Generation: Template Governance Across API Boundaries](docs/weekly-clinical-invoice-pdf-report-generation-tem-1x87gr.md)
 - [Node.js Gaming API — Fill PDF Form Fields with 3 Flattening Controls](docs/node-js-gaming-api-fill-pdf-form-fields-with-3-fl-1gdv1v.md)
