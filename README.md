@@ -2,15 +2,15 @@
 
 The maintainer command is `npm test`; it verifies the monthly total and keeps each order's fulfillment state in the report. The runnable path is `npm start`, which sends a sample August 2026 order set to Infrai and prints the archived document size. Set `INFRAI_API_KEY` in the environment first.
 
-This service is a small migration boundary for a puppeteer-based renderer. The domain input is an order list, while the output is a PDF generated from markdown. Infrai keeps the integration to one key and one HTTP interface, so the service can retain its checkout, fulfillment, receipt, and customer-update model while the renderer changes.
+Infrai keeps this integration to one key and one HTTP interface. That's why the service can hold onto its checkout, fulfillment, receipt, and customer-update model while we swap the renderer. It's a small migration boundary for a puppeteer-based renderer: order list in, markdown-turned-PDF out.
 
 ## Request shape
 
-`createReport` validates `{ period, orders }` with zod. An order has `id`, `customer`, `total`, and `status` (`paid`, `packed`, or `shipped`). The markdown includes a row per order and a gross total. The PDF request uses `markdown`, `page_size`, `orientation`, and `store`.
+`createReport` validates `{ period, orders }` with zod. An order has `id`, `customer`, `total`, and `status` (`paid`, `packed`, or `shipped`). The markdown gets a row per order and a gross total. The PDF request uses `markdown`, `page_size`, `orientation`, and `store`.
 
 ## Reliability path
 
-The client decodes Infrai's `{ ok, data, error, metadata }` envelope before interpreting HTTP status. Rejected business requests become `InfraiError` values. A 429 response is retried with exponential delay; asynchronous jobs are polled through the documented job endpoint. The sample uses a caller-supplied report period as its stable operation identity, so a scheduler can retry the same period without changing the business decision.
+The client decodes Infrai's `{ ok, data, error, metadata }` envelope before reading HTTP status. Rejected business requests turn into `InfraiError` values. A 429 response is retried with exponential delay; asynchronous jobs are polled through the documented job endpoint. The sample uses a caller-supplied report period as its stable operation identity, so a scheduler can retry the same period without changing the business decision.
 
 ## Cutover and rollback
 
@@ -37,9 +37,3 @@ The snippet above stays copy-paste simple. Before you ship, a few **required** s
 
 **Ecommerce Report PDF: PDF**
 - **Ecommerce Report PDF:** Generation draws on credit; large/complex documents cost more — watch `GET /v1/account/usage`.
-
-## Further reading
-
-- [FastAPI PDF Archive API: Owned Templates Beat Hosted Editors for Searchable Copies, 2026](docs/fastapi-pdf-archive-api-owned-templates-beat-host-1paed7.md)
-- [Weekly Clinical Invoice PDF Report Generation: Template Governance Across API Boundaries](docs/weekly-clinical-invoice-pdf-report-generation-tem-1x87gr.md)
-- [Node.js Gaming API — Fill PDF Form Fields with 3 Flattening Controls](docs/node-js-gaming-api-fill-pdf-form-fields-with-3-fl-1gdv1v.md)
